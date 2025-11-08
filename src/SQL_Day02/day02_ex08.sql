@@ -1,0 +1,14 @@
+SELECT 
+  person.name AS name 
+FROM 
+  person 
+  INNER JOIN person_order ON person_order.person_id = person.id 
+  INNER JOIN menu ON menu.id = person_order.menu_id 
+WHERE 
+  person.address IN ('Moscow', 'Samara') 
+  AND person.gender = 'male' 
+  AND (
+    menu.pizza_name = 'pepperoni pizza' 
+    OR menu.pizza_name = 'mushroom pizza'
+  ) 
+ORDER BY 1 DESC
